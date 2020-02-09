@@ -4,7 +4,9 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.design.widget.TextInputLayout
 import android.support.v7.app.AppCompatActivity
+import android.text.TextUtils
 import com.avp.carregume.R
 import com.avp.carregume.databinding.ActivityGameBinding
 import com.avp.carregume.model.Player
@@ -47,20 +49,21 @@ class GameActivity : AppCompatActivity() {
         this@GameActivity.player2 = player2
     }
 
-    // test new alert
+    //  choose vegetable
     fun vegetableEntry() {
         val dialog =
             chooseVegetableDialog.newInstance(this)
         dialog.isCancelable = false
         dialog.show(supportFragmentManager, GAME_vegetable_DIALOG_TAG)
     }
-
+    // set vegetable
     fun onVegetableSet(legumeName1: String, legumeName2: String) {
         this@GameActivity.legumeName1 = legumeName1
         this@GameActivity.legumeName2 = legumeName2
         initDataBinding()
     }
 
+    // initialisation du databinding
     private fun initDataBinding() {
         val player1:  Array<String> = arrayOf(this@GameActivity.player1, this@GameActivity.legumeName1)
         val player2:  Array<String> = arrayOf(this@GameActivity.player2, this@GameActivity.legumeName2)

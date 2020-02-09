@@ -2,6 +2,7 @@ package com.avp.carregume.utils
 
 import java.lang.StringBuilder
 
+
 class StringUtility {
     companion object {
         fun stringFromNumbers(vararg numbers: Int): String {

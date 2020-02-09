@@ -69,18 +69,16 @@ class GameBeginDialog : DialogFragment() {
     }
 
     private fun isAValidName(layout: TextInputLayout, name: String): Boolean {
-        if (TextUtils.isEmpty(name)) {
+/*        if (TextUtils.isEmpty(name)) {
             layout.isErrorEnabled = true
             layout.error = getString(R.string.game_dialog_empty_name)
             return false
-        }
-
-//        if (player1.) {
-//            layout.isErrorEnabled = true
-//            layout.error = getString(R.string.game_dialog_same_names)
-//            return false
-//        }
-
+        }*/
+        if (TextUtils.isEmpty(name)) {
+           layout.isErrorEnabled = true
+            layout.error = getString(R.string.game_dialog_same_names)
+           return false
+      }
         layout.isErrorEnabled = false
         layout.error = ""
         return true

@@ -14,6 +14,7 @@ import com.avp.carregume.R
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.*
+import com.avp.carregume.utils.StringUtility
 
 
 class chooseVegetableDialog : DialogFragment() {
@@ -36,7 +37,7 @@ class chooseVegetableDialog : DialogFragment() {
 
     // Initializing a String Array
 
-    val vegetables = arrayOf("salade", "tomate", "ognion")
+    val vegetables = arrayOf("Salade", "Tomate", "Ognion")
     private lateinit var spinner: Spinner
     private lateinit var spinner2: Spinner
 
@@ -58,12 +59,13 @@ class chooseVegetableDialog : DialogFragment() {
             .setCancelable(false)
             .setPositiveButton(R.string.done, null)
             .create()
+
+
         alertDialog.setCanceledOnTouchOutside(false)
         alertDialog.setCancelable(false)
         alertDialog.setOnShowListener {
             onDialogShow(alertDialog)
         }
-
         return alertDialog
 
 
@@ -75,14 +77,7 @@ class chooseVegetableDialog : DialogFragment() {
 
         rootView = LayoutInflater.from(context)
             .inflate(R.layout.dialog_vegetable_begin, null, false)
-        /*
-        vetetable1Layout = rootView.findViewById(R.id.layout_player1)
-        vetetable2Layout = rootView.findViewById(R.id.layout_player2)
 
-        vetetable1EditText = rootView.findViewById(R.id.et_player1)
-
-        vetetable2EditText = rootView.findViewById(R.id.et_player2)
-        */
         spinner = rootView.findViewById(R.id.spinner)
 
         if (spinner != null) {
@@ -121,23 +116,23 @@ class chooseVegetableDialog : DialogFragment() {
         positiveButton.setOnClickListener { onDoneClicked() }
     }
 
-    private fun isAValidName(layout: TextInputLayout, name: String): Boolean {
-        if (TextUtils.isEmpty(name)) {
-            layout.isErrorEnabled = true
-            layout.error = getString(R.string.game_dialog_empty_name)
+    private fun isAValidName(layout2: TextInputLayout, name: String): Boolean {
+        if (StringUtility.isNullOrEmpty(name)) {
+            layout2.isErrorEnabled = true
+            layout2.error = getString(R.string.game_dialog_empty_name)
             return false
         }
 
-        layout.isErrorEnabled = false
-        layout.error = ""
+        layout2.isErrorEnabled = false
+        layout2.error = ""
         return true
     }
 
     private fun onDoneClicked() {
-       // if (isAValidName(text_view, vetetable1) and isAValidName(text_view2, vetetable2)) {
+       //if (isAValidName(text_view, vetetable1) and isAValidName(text_view2, vetetable2)) {
             activity.onVegetableSet(vetetable1, vetetable2)
             dismiss()
-        //}
+       // }
     }
 
 
